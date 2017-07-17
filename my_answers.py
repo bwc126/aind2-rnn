@@ -12,8 +12,8 @@ def window_transform_series(series, window_size):
     # containers for input/output pairs
     X = []
     y = []
-    for window in range(len(series)-window_size-1):
-        begin = window + window_size
+    for window in range(len(series)-window_size):
+        begin = window
         end = begin + window_size
         X.append(series[begin:end])
         y.append(series[end])
