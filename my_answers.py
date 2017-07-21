@@ -44,7 +44,7 @@ def cleaned_text(text):
     words = text.split(" ")
     words = [str().join(filter(alpha_pun, word)) for word in words]
     words = [word for word in words if word]
-    text = words
+    text = words.join()
     return text
 
 ### TODO: fill out the function below that transforms the input text and window-size into a set of input/output pairs for use with our RNN model
