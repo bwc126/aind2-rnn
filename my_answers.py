@@ -39,14 +39,11 @@ def build_part1_RNN(window_size):
 def cleaned_text(text):
 
     punctuation = ['!', ',', '.', ':', ';', '?']
-    # def alpha_pun(letter):
-    #     return str.isalpha or letter in punctuation
-    # # words = text.split(" ")
-    # words = [str().join(filter(alpha_pun, word)) for word in text]
-    # words = [word for word in words if word]
-    # text = words.join()
+
+    # Enumerate all unique characters in the text
     chars = Counter(text)
     for char in chars:
+        # If a character isn't alphanumeric or in the punctuation list, replace it with a space
         if char.isalpha == False and char not in punctuation:
             text = text.replace(char, ' ')
 
@@ -59,6 +56,11 @@ def window_transform_text(text, window_size, step_size):
     # containers for input/output pairs
     inputs = []
     outputs = []
+    for window in range(len(text)-window_size):
+        begin = window
+        end = begin + window_size
+        inputs.append(text[begin:end])
+        outputs.append(text[end])
 
     return inputs,outputs
 
