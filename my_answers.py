@@ -32,13 +32,19 @@ def build_part1_RNN(window_size):
     model.add(LSTM(5, input_shape=(window_size,1)))
     model.add(Dense(1))
     return model
-    
+
 
 
 ### TODO: return the text input with only ascii lowercase and the punctuation given below included.
 def cleaned_text(text):
-    punctuation = ['!', ',', '.', ':', ';', '?']
 
+    punctuation = ['!', ',', '.', ':', ';', '?']
+    def alpha_pun(letter):
+        return str.isalpha or letter in punctuation
+    words = text.split(" ")
+    words = [str().join(filter(alpha_pun, word)) for word in words]
+    words = [word for word in words if word]
+    text = words
     return text
 
 ### TODO: fill out the function below that transforms the input text and window-size into a set of input/output pairs for use with our RNN model
