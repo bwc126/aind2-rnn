@@ -41,7 +41,7 @@ def cleaned_text(text):
     punctuation = ['!', ',', '.', ':', ';', '?']
     def alpha_pun(letter):
         return str.isalpha or letter in punctuation
-    words = text.split(" ")
+    # words = text.split(" ")
     words = [str().join(filter(alpha_pun, word)) for word in words]
     words = [word for word in words if word]
     text = words.join()
