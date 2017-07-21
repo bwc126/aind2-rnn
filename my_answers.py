@@ -1,5 +1,5 @@
 import numpy as np
-
+from collections import Counter
 from keras.models import Sequential
 from keras.layers import Dense
 from keras.layers import LSTM
@@ -39,12 +39,19 @@ def build_part1_RNN(window_size):
 def cleaned_text(text):
 
     punctuation = ['!', ',', '.', ':', ';', '?']
-    def alpha_pun(letter):
-        return str.isalpha or letter in punctuation
-    # words = text.split(" ")
-    words = [str().join(filter(alpha_pun, word)) for word in text]
-    words = [word for word in words if word]
-    text = words.join()
+    # def alpha_pun(letter):
+    #     return str.isalpha or letter in punctuation
+    # # words = text.split(" ")
+    # words = [str().join(filter(alpha_pun, word)) for word in text]
+    # words = [word for word in words if word]
+    # text = words.join()
+    chars = Counter(text)
+    for char in chars:
+        if char.isalpha == False and char not in punctuation:
+            text = text.replace(char, ' ')
+
+
+
     return text
 
 ### TODO: fill out the function below that transforms the input text and window-size into a set of input/output pairs for use with our RNN model
