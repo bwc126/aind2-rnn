@@ -39,7 +39,7 @@ def build_part1_RNN(window_size):
 def cleaned_text(text):
 
     punctuation = ['!', ',', '.', ':', ';', '?']
-
+    text = text.replace('_', ' ')
     # Enumerate all unique characters in the text
     chars = Counter(text)
     for char in chars:
