@@ -44,9 +44,9 @@ def cleaned_text(text):
     chars = Counter(text)
     for char in chars:
         # If a character isn't alphanumeric or in the punctuation list, replace it with a space
-        if char.isalpha == False and char not in punctuation:
-            text = text.replace(char, ' ')
-
+        if char.isalpha() == False:
+            if char not in punctuation:
+                text = text.replace(char, ' ')
 
 
     return text
@@ -70,5 +70,5 @@ def build_part2_RNN(window_size, num_chars):
     model = Sequential()
     model.add(LSTM(200, input_shape=(window_size, num_chars)))
     model.add(Dense(num_chars, activation='linear'))
-    model.add(Dense(num_chars, activation='softmax'))
+    model.add(Activation('softmax'))
     return model
